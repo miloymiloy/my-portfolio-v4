@@ -38,6 +38,9 @@ a{
 .profile-menu-items{
     cursor: pointer;
 }
+.mobile-profile-bio-container p{
+    margin: 0;
+}
 .highlight-box img{
     margin: 1.5rem;
     padding: .25rem;
@@ -94,9 +97,12 @@ a{
 }
 
 .proj-gallery{
-    width: 100px;
-    margin-bottom: 10px;
+    width: 90%;
+    height: 100%;
     cursor: pointer;
+}
+.proj-gallery-selected{
+    opacity: 30%;
 }
 .tech-items-box p{
     margin: 0;
@@ -104,12 +110,20 @@ a{
 .project-modal-content-wrapper{
     margin: 0 4rem 0 4rem;
 }
+
+.proj-gallery-box .col-3,.projgallery-collapse-box .col-3{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: .1rem;
+}
+
 footer p{
     font-size: .8rem;
 }
 
 @media(max-width: 768px) {
-    p,span,a{
+    p,span,a,li{
         font-size: 1rem;
     }
     h1 { 
@@ -176,7 +190,7 @@ footer p{
     }
     .mobile-profile-bio-container{
         display: block !important;
-        padding: 2rem 0 .5rem 1.5rem;
+        padding: .5rem 1rem .5rem 1rem;
     }
     .profile-image-container img{
         height: 120px;
@@ -188,9 +202,10 @@ footer p{
     .project-box{
         margin: .1rem !important;
     }
-    .proj-gallery-box,.projgallery-collapse-box{
+    /* .proj-gallery-box,.projgallery-collapse-box{
         text-align: center;
-    }
+    } */
+  
     .nav-items p{
         display: none;
     }.mobile-profile-details-container{
@@ -270,6 +285,10 @@ footer p{
     .project-image-container img{
         height: 35vh;
     }
+    .proj-gallery{
+        width: 90%;
+        height: 100%;
+    }
     footer p{
         margin-top: 4rem;
         font-size: .6rem;
@@ -278,7 +297,8 @@ footer p{
 
 
 @media (max-width: 576px) {
-    p,span,a{
+   
+    p,span,a,li{
         font-size: 0.875rem;
     }
     .profile-menu-items i{
@@ -303,7 +323,7 @@ footer p{
         margin: .05rem  !important;
     }
     iframe{
-        width: 100%;
+        width: 96%;
     }
     #abt-me-carousel{
         width: 100%;
@@ -345,6 +365,7 @@ footer p{
     }
     .proj-gallery{
         width: 90%;
+        height: 100%;
     }
    
 }

@@ -7,7 +7,7 @@ $(document).ready(function(){
         title: 'LenAyen Baked Products Order Management System',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP',
-        Description: 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ex explicabo impedit aperiam nemo possimus quod fugiat id quisquam adipisci, excepturi unde aspernatur cupiditate doloribus ab doloremque veniam asperiores inventore, sapiente, voluptatum laborum. Pariatur, suscipit deserunt. Sapiente dolor dolorum nihil nemo ipsa? Eum cupiditate fugit dolore vero eaque culpa consequuntur. Suscipit.',
+        Description: 'I worked on a college project for my Software Engineering course where I developed a system. I took on the roles of both front-end and back-end programmer for this project.',
     },
     {
         id: 'speakup',
@@ -21,7 +21,7 @@ $(document).ready(function(){
         title: 'Self-IT: A Web-based Planner Application',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP, Laravel',
-        Description: 'College Capstone project. Im the programmer in this project.',
+        Description: 'This was a College Capstone project. I served as both the front-end and back-end programmer for this project.',
     },
     {
         id: 'tictac',
@@ -93,6 +93,54 @@ $(document).ready(function(){
 
         }
     }
+
+
+    var experience = [{
+        position: 'IT Intern',
+        workType: 'Internship',
+        googlemap: '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d817.5270794085557!2d124.12376977439453!3d12.918255029743053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x33a0eb6f199a695f%3A0x2a67becfbb0cc65c!2sW49F%2B8FF%2C%20Manook%20St%2C%20Gubat%2C%20Sorsogon!5e0!3m2!1sen!2sph!4v1732621031182!5m2!1sen!2sph" width="600" height="200" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>',
+        company: 'RHU - LGU Municipality of Gubat, Sorsogon, Philippines',
+        date: 'September 2023 - December 2023',
+        role: [
+            'Encoding of medical records and personal information of patients',
+            'Update patient records',
+            'Sorting of medical records',
+            'Troubleshooting employee devices'
+            ],
+    },
+
+    ]
+
+    //LOAD EXPERIENCE
+    experience.forEach(function(exp,index) {
+        var roleLists = ''
+        exp.role.forEach(function(roles) { 
+            roleLists += '<li>' + roles + '</li>'
+         })
+        $('.exp-content-wrapper').append(`<div class="mt-2 border p-1 exp-content-box">
+            <h5 class="m-0" data-bs-toggle="collapse" data-bs-target="#exp-collapse-container${index}" aria-expanded="false" aria-controls="exp-collapse-container${index}  ">${exp.position}</h5>
+           
+            <div>
+              <div class="collapse collapse-horizontal show" id="exp-collapse-container${index}">
+                <div class="col-12 p-2 border-0">
+                ${exp.googlemap}
+                 <h6>${exp.workType}</h6>
+                 <h6>${exp.company}</h6>
+                 <p>${exp.date}</p>
+                 <h6>Role:</h6>
+                 <ul>
+                   ${roleLists}
+                 </ul>
+                 
+                </div>
+              </div>
+            </div>
+           </div>`)
+    })
+
+
+
+
 
     // PAGE LOAD
     if(navActive){
@@ -342,12 +390,32 @@ $(document).ready(function(){
 
     //PROJ GALLERY SELECT
     $(document).on('click', '.proj-gallery', function(){
+        if ($('.proj-gallery').hasClass('proj-gallery-selected')) {
+             $('.proj-gallery').removeClass('proj-gallery-selected')
+        }
+        $(this).toggleClass('proj-gallery-selected')
         var projImgselect = $(this).attr('src')
         $('.project-image-container img').attr('src',projImgselect)
     })
 
+    //PROJECT GALLERY TOGGLE
+    $('.toggle-prog-gallery').on('click',function(){
+        
+        if ($(this).hasClass('fa-chevron-down')) {
+            $(this).addClass('fa-chevron-up')
+            $(this).removeClass('fa-chevron-down')
+        }
+        else{
+            $(this).removeClass('fa-chevron-up')
+            $(this).addClass('fa-chevron-down')
+        }
+    })
+    
+
     function closeCollapse() { 
         $('#projgallery-collapse').collapse('hide') 
+        $('.toggle-prog-gallery').removeClass('fa-chevron-up')
+        $('.toggle-prog-gallery').addClass('fa-chevron-down')
     }
 
     //MODAL CLOSE
