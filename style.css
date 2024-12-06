@@ -22,6 +22,9 @@
 .profile-highlight-container{
     margin: 0 3rem 0 3rem;
 }
+.profile-menu-items i{
+    font-size: .8rem;
+}
 .profile-container{
     margin-right: 0 !important;
 }
@@ -121,6 +124,14 @@ a{
 footer p{
     font-size: .8rem;
 }
+
+@media(min-width: 768px) {
+    .project-box{
+        margin: .2rem  !important;
+    }
+
+}
+
 
 @media(max-width: 768px) {
     p,span,a,li{

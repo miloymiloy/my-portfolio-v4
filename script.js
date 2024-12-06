@@ -117,8 +117,9 @@ $(document).ready(function(){
         exp.role.forEach(function(roles) { 
             roleLists += '<li>' + roles + '</li>'
          })
+
         $('.exp-content-wrapper').append(`<div class="mt-2 border p-1 exp-content-box">
-            <h5 class="m-0" data-bs-toggle="collapse" data-bs-target="#exp-collapse-container${index}" aria-expanded="false" aria-controls="exp-collapse-container${index}  ">${exp.position}</h5>
+            <h5 class="mx-2" data-bs-toggle="collapse" data-bs-target="#exp-collapse-container${index}" aria-expanded="false" aria-controls="exp-collapse-container${index}  ">${exp.position}</h5>
            
             <div>
               <div class="collapse collapse-horizontal show" id="exp-collapse-container${index}">
@@ -136,8 +137,8 @@ $(document).ready(function(){
               </div>
             </div>
            </div>`)
-    })
 
+    })
 
 
 
