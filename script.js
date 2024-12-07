@@ -4,6 +4,7 @@ $(document).ready(function(){
     //PROJECTS DETAIL
     var projects = [{
         id: 'storelen',
+        cover: 'project/storelen/cover.PNG',
         title: 'LenAyen Baked Products Order Management System',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP',
@@ -11,13 +12,23 @@ $(document).ready(function(){
     },
     {
         id: 'speakup',
+        cover: 'project/speakup/cover.PNG',
         title: 'Speak Up: a simple freedomwall',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP',
         Description: 'A user-friendly Freedom Wall application where you can express and share anything you want. Users can easily create new posts and read existing entries. This project encourages open communication and provides a platform for sharing ideas, stories, and experiences.',
     },
     {
+        id: 'caesar',
+        cover: 'project/caesar/caesar.PNG',
+        title: 'Caesar Cipher',
+        link: 'https://caesar-cipher-rle.vercel.app/',
+        techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery',
+        Description: 'A project from my college days where we were tasked with creating a website that performs Caesar cipher encryption and decryption.',
+    },
+    {
         id: 'selfit',
+        cover: 'project/selfit/homepage.PNG',
         title: 'Self-IT: A Web-based Planner Application',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP, Laravel',
@@ -25,10 +36,19 @@ $(document).ready(function(){
     },
     {
         id: 'tictac',
+        cover: 'project/tictac/tictac1.PNG',
         title: 'Tic-Tac-Toe',
         link: 'https://tic-tac-toe-rle.vercel.app/',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery',
         Description: 'A simple Tic-Tac-Toe Web Application I created as a personal project. The game includes timers for both players, adding a thrilling element of urgency. Players need to act fast before their time runs out; otherwise, they will lose the game. I also added a win counter for both players, displayed beside each timer.',
+    },  
+    {
+        id: 'spotifywrapped',
+        cover: 'project/spotifywrapped/spotifywrapped.PNG',
+        title: 'Spotify Wrapped Template Creator',
+        link: 'https://spotify-wrapped-creator.vercel.app/',
+        techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery',
+        Description: 'I created a project inspired by the Spotify Wrapped trend I saw on Facebook. This project allows me to input any music or artist into the template.',
     },
     ]
 
@@ -147,11 +167,20 @@ $(document).ready(function(){
     if(navActive){
         $('#'+navActive).addClass('nav-active')
     }
+
+    //LOAD TOTAL NUMBER OF PROJECTS
     $('.projectCount').text(projects.length)
 
+    //LOAD MY BIO
     var mybio = "Aspiring Web Developer who loves art"
-    
     $('.mobile-profile-bio-container, .profile-bio-container').html(`<p>`+mybio+`</p>`)
+
+    //LOAD ALL PROJECTS
+    projects.reverse().forEach(function(project){
+        $('.projects-container').append(`<div class="col-4 m-1 card rounded-0 project-box" data-proj="${project.id}">
+                        <img class="card-img-top rounded-0" src="${project.cover}" height="300">
+                    </div>`)
+    })
 
     // var skills = [{
     //     name: 'https://www.facebook.com/esquierra.r',
@@ -227,7 +256,16 @@ $(document).ready(function(){
         "tictac1.PNG",
     ]
 
+    var caesar = [
+        "caesar.PNG",
+        "caesar1.PNG",
+        "caesar2.PNG",
+    ]
 
+    var spotifywrapped = [
+        "spotifywrapped.PNG",
+        "spotifywrapped1.PNG",
+    ]
     // NAV SELECT
 
     $('.projects-menu-profile').on('click',function(){
@@ -283,92 +321,22 @@ $(document).ready(function(){
         var showproject = projects.find(proj => proj.id == projTitle)
         $('.proj-gallery-box').html('')
         $('.projgallery-collapse-box').html('')
-        if(projTitle == 'storelen'){   
-            displayProjectInfo(showproject)
-
-            storelen.forEach(function(store,index){
-       
-                if(index <= 3){
-                     var projContent = ` <div class="col-3">
-                                    <img src="/project/${projTitle}/${store}" class="proj-gallery">
-                                  </div>`
-                    $('.proj-gallery-box').append(projContent)
-                }
-                else{
-                    
-                    var projContentcollapse = ` <div class="col-3">
-                                    <img src="/project/${projTitle}/${store}" class="proj-gallery">
-                                  </div>`
-                    $('.projgallery-collapse-box').append(projContentcollapse)
-                }
-               
-        
-                
-            })
-        }
-        else if(projTitle == 'speakup'){
-            displayProjectInfo(showproject)
-
-            speakup.forEach(function(speak,index){
-       
-                if(index <= 3){
-                     var projContent = ` <div class="col-3">
-                                    <img src="/project/${projTitle}/${speak}" class="proj-gallery">
-                                  </div>`
-                    $('.proj-gallery-box').append(projContent)
-                }
-                else{
-                    
-                    var projContentcollapse = ` <div class="col-3">
-                                    <img src="/project/${projTitle}/${speak}" class="proj-gallery">
-                                  </div>`
-                    $('.projgallery-collapse-box').append(projContentcollapse)
-                }
-               
-        
-                
-            })
+        if(projTitle){   
             
-        }
-        else if(projTitle == 'selfit'){
             displayProjectInfo(showproject)
 
-            selfit.forEach(function(itself,index){
+            eval(projTitle).forEach(function(content,index){
        
                 if(index <= 3){
                      var projContent = ` <div class="col-3">
-                                    <img src="/project/${projTitle}/${itself}" class="proj-gallery">
+                                    <img src="/project/${projTitle}/${content}" class="proj-gallery">
                                   </div>`
                     $('.proj-gallery-box').append(projContent)
                 }
                 else{
                     
                     var projContentcollapse = ` <div class="col-3">
-                                    <img src="/project/${projTitle}/${itself}" class="proj-gallery">
-                                  </div>`
-                    $('.projgallery-collapse-box').append(projContentcollapse)
-                }
-               
-        
-                
-            })
-
-        }
-        else if(projTitle == 'tictac'){
-            displayProjectInfo(showproject)
-
-            tictac.forEach(function(tic,index){
-       
-                if(index <= 3){
-                     var projContent = ` <div class="col-3">
-                                    <img src="/project/${projTitle}/${tic}" class="proj-gallery">
-                                  </div>`
-                    $('.proj-gallery-box').append(projContent)
-                }
-                else{
-                    
-                    var projContentcollapse = ` <div class="col-3">
-                                    <img src="/project/${projTitle}/${tic}" class="proj-gallery">
+                                    <img src="/project/${projTitle}/${content}" class="proj-gallery">
                                   </div>`
                     $('.projgallery-collapse-box').append(projContentcollapse)
                 }
@@ -377,6 +345,77 @@ $(document).ready(function(){
                 
             })
         }
+        // else if(projTitle == 'speakup'){
+        //     displayProjectInfo(showproject)
+
+        //     speakup.forEach(function(speak,index){
+       
+        //         if(index <= 3){
+        //              var projContent = ` <div class="col-3">
+        //                             <img src="/project/${projTitle}/${speak}" class="proj-gallery">
+        //                           </div>`
+        //             $('.proj-gallery-box').append(projContent)
+        //         }
+        //         else{
+                    
+        //             var projContentcollapse = ` <div class="col-3">
+        //                             <img src="/project/${projTitle}/${speak}" class="proj-gallery">
+        //                           </div>`
+        //             $('.projgallery-collapse-box').append(projContentcollapse)
+        //         }
+               
+        
+                
+        //     })
+            
+        // }
+        // else if(projTitle == 'selfit'){
+        //     displayProjectInfo(showproject)
+
+        //     selfit.forEach(function(itself,index){
+       
+        //         if(index <= 3){
+        //              var projContent = ` <div class="col-3">
+        //                             <img src="/project/${projTitle}/${itself}" class="proj-gallery">
+        //                           </div>`
+        //             $('.proj-gallery-box').append(projContent)
+        //         }
+        //         else{
+                    
+        //             var projContentcollapse = ` <div class="col-3">
+        //                             <img src="/project/${projTitle}/${itself}" class="proj-gallery">
+        //                           </div>`
+        //             $('.projgallery-collapse-box').append(projContentcollapse)
+        //         }
+               
+        
+                
+        //     })
+
+        // }
+        // else if(projTitle == 'tictac'){
+        //     displayProjectInfo(showproject)
+
+        //     tictac.forEach(function(tic,index){
+       
+        //         if(index <= 3){
+        //              var projContent = ` <div class="col-3">
+        //                             <img src="/project/${projTitle}/${tic}" class="proj-gallery">
+        //                           </div>`
+        //             $('.proj-gallery-box').append(projContent)
+        //         }
+        //         else{
+                    
+        //             var projContentcollapse = ` <div class="col-3">
+        //                             <img src="/project/${projTitle}/${tic}" class="proj-gallery">
+        //                           </div>`
+        //             $('.projgallery-collapse-box').append(projContentcollapse)
+        //         }
+               
+        
+                
+        //     })
+        // }
         else{
             $('.projTitle').text('')
             $('.proj-techUsed').text('')
@@ -401,15 +440,17 @@ $(document).ready(function(){
 
     //PROJECT GALLERY TOGGLE
     $('.toggle-prog-gallery').on('click',function(){
+        if($.trim($('.projgallery-collapse-box').html()) !== ''){
+            if ($(this).hasClass('fa-chevron-down')) {
+                $(this).addClass('fa-chevron-up')
+                $(this).removeClass('fa-chevron-down')
+            }
+            else{
+                $(this).removeClass('fa-chevron-up')
+                $(this).addClass('fa-chevron-down')
+            }
+        }
         
-        if ($(this).hasClass('fa-chevron-down')) {
-            $(this).addClass('fa-chevron-up')
-            $(this).removeClass('fa-chevron-down')
-        }
-        else{
-            $(this).removeClass('fa-chevron-up')
-            $(this).addClass('fa-chevron-down')
-        }
     })
     
 
@@ -417,6 +458,8 @@ $(document).ready(function(){
         $('#projgallery-collapse').collapse('hide') 
         $('.toggle-prog-gallery').removeClass('fa-chevron-up')
         $('.toggle-prog-gallery').addClass('fa-chevron-down')
+
+        
     }
 
     //MODAL CLOSE
