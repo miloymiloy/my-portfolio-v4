@@ -8,7 +8,23 @@ $(document).ready(function(){
         title: 'LenAyen Baked Products Order Management System',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP',
-        Description: 'I worked on a college project for my Software Engineering course where I developed a system. I took on the roles of both front-end and back-end programmer for this project.',
+        description: 'I worked on a college project for my Software Engineering course where I developed a system. I took on the roles of both front-end and back-end programmer for this project.',
+        images: [
+            "userprofile.PNG",
+            "userinvoice.PNG",
+            "admindashboard.PNG",
+            "adminaddprodct.PNG",
+            "about.PNG",
+            "contact.PNG",
+            "checkout.PNG",
+            "loginfirst.PNG",
+            "usercart.PNG",
+            "usernotif.PNG",
+            "userorder.PNG",
+            "adminorders.PNG",
+            "adminproduct.PNG",
+            "adminrejectorder.PNG",
+        ],
     },
     {
         id: 'speakup',
@@ -16,7 +32,14 @@ $(document).ready(function(){
         title: 'Speak Up: a simple freedomwall',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP',
-        Description: 'A user-friendly Freedom Wall application where you can express and share anything you want. Users can easily create new posts and read existing entries. This project encourages open communication and provides a platform for sharing ideas, stories, and experiences.',
+        description: 'A user-friendly Freedom Wall application where you can express and share anything you want. Users can easily create new posts and read existing entries. This project encourages open communication and provides a platform for sharing ideas, stories, and experiences.',
+        images: [
+            "posthome.PNG",
+            "posts.PNG",
+            "success.PNG",
+            "suggestion.PNG",
+            "cover.PNG",
+        ],
     },
     {
         id: 'caesar',
@@ -24,7 +47,12 @@ $(document).ready(function(){
         title: 'Caesar Cipher',
         link: 'https://caesar-cipher-rle.vercel.app/',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery',
-        Description: 'A project from my college days where we were tasked with creating a website that performs Caesar cipher encryption and decryption.',
+        description: 'A project from my college days where we were tasked with creating a website that performs Caesar cipher encryption and decryption.',
+        images: [
+            "caesar.PNG",
+            "caesar1.PNG",
+            "caesar2.PNG",
+        ],
     },
     {
         id: 'selfit',
@@ -32,7 +60,31 @@ $(document).ready(function(){
         title: 'Self-IT: A Web-based Planner Application',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP, Laravel',
-        Description: 'This was a College Capstone project. I served as both the front-end and back-end programmer for this project.',
+        description: 'This was a College Capstone project. I served as both the front-end and back-end programmer for this project.',
+        images: [
+            "signin.PNG",
+            "signup.PNG",
+            "user_dashboard.PNG",
+            "user_calendar.PNG",
+            "user_board.PNG",
+            "user_labels.PNG",
+            "user_list.PNG",
+            "user_list-stats.PNG",
+            "user_progressreport.PNG",
+            "user_task.PNG",
+            "user_timetable.PNG",
+            "user_weather.PNG",
+            "user_workspace.PNG",
+            "user_suspended.PNG",
+            "forgot_password.PNG",
+            "admin_dashboard.PNG",
+            "admin_feedback.PNG",
+            "admin_reports.PNG",
+            "admin_users_information.PNG",
+            "admin_calendar.PNG",
+            "generate_feedbacks.PNG",
+            "generate_users.PNG",
+        ],
     },
     {
         id: 'tictac',
@@ -40,7 +92,11 @@ $(document).ready(function(){
         title: 'Tic-Tac-Toe',
         link: 'https://tic-tac-toe-rle.vercel.app/',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery',
-        Description: 'A simple Tic-Tac-Toe Web Application I created as a personal project. The game includes timers for both players, adding a thrilling element of urgency. Players need to act fast before their time runs out; otherwise, they will lose the game. I also added a win counter for both players, displayed beside each timer.',
+        description: 'A simple Tic-Tac-Toe Web Application I created as a personal project. The game includes timers for both players, adding a thrilling element of urgency. Players need to act fast before their time runs out; otherwise, they will lose the game. I also added a win counter for both players, displayed beside each timer.',
+        images: [
+            "tictac.PNG",
+            "tictac1.PNG",
+        ],
     },  
     {
         id: 'spotifywrapped',
@@ -48,7 +104,11 @@ $(document).ready(function(){
         title: 'Spotify Wrapped Template Creator',
         link: 'https://spotify-wrapped-creator.vercel.app/',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery',
-        Description: 'I created a project inspired by the Spotify Wrapped trend I saw on Facebook. This project allows me to input any music or artist into the template.',
+        description: 'I created a project inspired by the Spotify Wrapped trend I saw on Facebook. This project allows me to input any music or artist into the template.',
+        images: [
+            "spotifywrapped.PNG",
+            "spotifywrapped1.PNG",
+        ],
     },
     ]
 
@@ -96,11 +156,12 @@ $(document).ready(function(){
     $('.abtme-age').text(age)
 
 
+    //MODAL SHOW PROJECT INFO
     function displayProjectInfo(showproject){
 
         $('.projTitle').text(showproject.title)
         $('.proj-techUsed').text(showproject.techUsed)
-        $('.proj-description').text(showproject.Description)
+        $('.proj-description').text(showproject.description)
        
         if(showproject.link != '#'){
             $('.proj-link').attr('href',showproject.link)
@@ -200,72 +261,7 @@ $(document).ready(function(){
     // },
     // ]
 
-    //PROJECTS
-    var storelen = [
-        "userprofile.PNG",
-        "userinvoice.PNG",
-        "admindashboard.PNG",
-        "adminaddprodct.PNG",
-        "about.PNG",
-        "contact.PNG",
-        "checkout.PNG",
-        "loginfirst.PNG",
-        "usercart.PNG",
-        "usernotif.PNG",
-        "userorder.PNG",
-        "adminorders.PNG",
-        "adminproduct.PNG",
-        "adminrejectorder.PNG",
-    ]
-
-    var speakup = [
-        "posthome.PNG",
-        "posts.PNG",
-        "success.PNG",
-        "suggestion.PNG",
-        "cover.PNG",
-    ]
-   
-    var selfit = [
-        "signin.PNG",
-        "signup.PNG",
-        "user_dashboard.PNG",
-        "user_calendar.PNG",
-        "user_board.PNG",
-        "user_labels.PNG",
-        "user_list.PNG",
-        "user_list-stats.PNG",
-        "user_progressreport.PNG",
-        "user_task.PNG",
-        "user_timetable.PNG",
-        "user_weather.PNG",
-        "user_workspace.PNG",
-        "user_suspended.PNG",
-        "forgot_password.PNG",
-        "admin_dashboard.PNG",
-        "admin_feedback.PNG",
-        "admin_reports.PNG",
-        "admin_users_information.PNG",
-        "admin_calendar.PNG",
-        "generate_feedbacks.PNG",
-        "generate_users.PNG",
-    ]
-
-    var tictac = [
-        "tictac.PNG",
-        "tictac1.PNG",
-    ]
-
-    var caesar = [
-        "caesar.PNG",
-        "caesar1.PNG",
-        "caesar2.PNG",
-    ]
-
-    var spotifywrapped = [
-        "spotifywrapped.PNG",
-        "spotifywrapped1.PNG",
-    ]
+    
     // NAV SELECT
 
     $('.projects-menu-profile').on('click',function(){
@@ -323,9 +319,10 @@ $(document).ready(function(){
         $('.projgallery-collapse-box').html('')
         if(projTitle){   
             
+            // CALL FUNCTION TO DISPLAY PROJECT INFO
             displayProjectInfo(showproject)
 
-            eval(projTitle).forEach(function(content,index){
+            showproject.images.forEach(function(content,index){
        
                 if(index <= 3){
                      var projContent = ` <div class="col-3">
