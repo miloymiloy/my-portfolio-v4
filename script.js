@@ -142,6 +142,7 @@ $(document).ready(function(){
 
 
 
+    //GET AGE
     var birthdate = new Date(2002,2,25)
     var datenow = new Date()
 
@@ -200,8 +201,10 @@ $(document).ready(function(){
          })
 
         $('.exp-content-wrapper').append(`<div class="mt-2 border p-1 exp-content-box">
-            <h5 class="m-0 mx-2" data-bs-toggle="collapse" data-bs-target="#exp-collapse-container${index}" aria-expanded="false" aria-controls="exp-collapse-container${index}  ">${exp.position}</h5>
-           
+           <div class="d-flex justify-content-between px-2 align-items-center exp-content-expand "  data-id="${index}">
+             <h5 class="m-0">${exp.position} </h5>
+            <i class="fa-solid fa-x m-0 p-0 fs-6 exp-icon-${index}"></i>
+           </div>
             <div>
               <div class="collapse collapse-horizontal show" id="exp-collapse-container${index}">
                 <div class="col-12 p-2 border-0">
@@ -221,7 +224,21 @@ $(document).ready(function(){
 
     })
 
+    //EXP COLLAPSE SHOW AND CHANGE ICON
+    $('.exp-content-expand').on('click',function(){
+        var expID = $(this).data('id')
+        
+        if ($('#exp-collapse-container'+expID).hasClass('show')) { 
+            $('.exp-icon-'+expID).addClass('fa-plus')
+            $('.exp-icon-'+expID).removeClass('fa-x')
+        } 
+        else { 
+            $('.exp-icon-'+expID).removeClass('fa-plus')
+            $('.exp-icon-'+expID).addClass('fa-x')
+        }
 
+        $('#exp-collapse-container'+expID).collapse('toggle')
+    })
 
 
     // PAGE LOAD
@@ -315,20 +332,26 @@ $(document).ready(function(){
     $('.project-box').on('click',function(){
         var projTitle = $(this).data('proj')
         var showproject = projects.find(proj => proj.id == projTitle)
+        var totalImages = 0
+        var loadedImages = 0
         $('.proj-gallery-box').html('')
         $('.projgallery-collapse-box').html('')
-        if(projTitle){   
+        if(showproject){   
             
             // CALL FUNCTION TO DISPLAY PROJECT INFO
             displayProjectInfo(showproject)
 
+            $('.gallery-loadin-anim').removeClass('d-none')
+            $('#projgallery-collapse, .proj-gallery-box').addClass('d-none')
+
             showproject.images.forEach(function(content,index){
-       
+                
                 if(index <= 3){
                      var projContent = ` <div class="col-3">
                                     <img src="/project/${projTitle}/${content}" class="proj-gallery">
                                   </div>`
                     $('.proj-gallery-box').append(projContent)
+                    totalImages++
                 }
                 else{
                     
@@ -336,83 +359,20 @@ $(document).ready(function(){
                                     <img src="/project/${projTitle}/${content}" class="proj-gallery">
                                   </div>`
                     $('.projgallery-collapse-box').append(projContentcollapse)
+                    totalImages++
                 }
-               
-        
+                      
                 
             })
+            $('.proj-gallery-box img, .projgallery-collapse-box img').on('load', function() { 
+                loadedImages++
+                if (loadedImages === totalImages) {
+                    $('.gallery-loadin-anim').addClass('d-none')
+                    $('#projgallery-collapse, .proj-gallery-box').removeClass('d-none')
+                } 
+            })
         }
-        // else if(projTitle == 'speakup'){
-        //     displayProjectInfo(showproject)
-
-        //     speakup.forEach(function(speak,index){
-       
-        //         if(index <= 3){
-        //              var projContent = ` <div class="col-3">
-        //                             <img src="/project/${projTitle}/${speak}" class="proj-gallery">
-        //                           </div>`
-        //             $('.proj-gallery-box').append(projContent)
-        //         }
-        //         else{
-                    
-        //             var projContentcollapse = ` <div class="col-3">
-        //                             <img src="/project/${projTitle}/${speak}" class="proj-gallery">
-        //                           </div>`
-        //             $('.projgallery-collapse-box').append(projContentcollapse)
-        //         }
-               
-        
-                
-        //     })
-            
-        // }
-        // else if(projTitle == 'selfit'){
-        //     displayProjectInfo(showproject)
-
-        //     selfit.forEach(function(itself,index){
-       
-        //         if(index <= 3){
-        //              var projContent = ` <div class="col-3">
-        //                             <img src="/project/${projTitle}/${itself}" class="proj-gallery">
-        //                           </div>`
-        //             $('.proj-gallery-box').append(projContent)
-        //         }
-        //         else{
-                    
-        //             var projContentcollapse = ` <div class="col-3">
-        //                             <img src="/project/${projTitle}/${itself}" class="proj-gallery">
-        //                           </div>`
-        //             $('.projgallery-collapse-box').append(projContentcollapse)
-        //         }
-               
-        
-                
-        //     })
-
-        // }
-        // else if(projTitle == 'tictac'){
-        //     displayProjectInfo(showproject)
-
-        //     tictac.forEach(function(tic,index){
-       
-        //         if(index <= 3){
-        //              var projContent = ` <div class="col-3">
-        //                             <img src="/project/${projTitle}/${tic}" class="proj-gallery">
-        //                           </div>`
-        //             $('.proj-gallery-box').append(projContent)
-        //         }
-        //         else{
-                    
-        //             var projContentcollapse = ` <div class="col-3">
-        //                             <img src="/project/${projTitle}/${tic}" class="proj-gallery">
-        //                           </div>`
-        //             $('.projgallery-collapse-box').append(projContentcollapse)
-        //         }
-               
-        
-                
-        //     })
-        // }
+  
         else{
             $('.projTitle').text('')
             $('.proj-techUsed').text('')
