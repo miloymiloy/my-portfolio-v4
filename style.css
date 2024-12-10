@@ -47,6 +47,7 @@ a{
 .highlight-box img{
     margin: 1.5rem;
     padding: .25rem;
+    cursor: pointer;
 }
 .nav-items{
     cursor: pointer;
@@ -120,6 +121,83 @@ a{
     align-items: center;
     margin-bottom: .1rem;
 }
+
+.highlights-modal-content-wrapper{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.highlight-content-container{
+    overflow: hidden;
+    height: 40vh;
+    width: 12%;
+    padding: .5rem .8rem .5rem .8rem;
+    background-image: url(/assets/img/Esquierra\,\ Ramilo\ Lelis.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    border-color: #101010 !important;
+    background-color: #404040;
+    opacity: 40%;
+}
+
+.active-highlight{
+    height: 94vh;
+    width: 26%;
+    opacity: 100%;
+    
+}
+.highlight-transition{
+    transition: all 0.5s ease-in-out;
+}
+.active-highlight .highlight-info{
+    display: block !important;
+}
+#highlights-modal .modal-body{
+    background-color: #1A1A1A;
+}
+.highlight-content-indicator-box{  
+    margin-top: .5rem;
+    -webkit-box-shadow: 0px -8px 79px 32px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px -8px 79px 32px rgba(0,0,0,0.75);
+    box-shadow: 0px -8px 79px 32px rgba(0,0,0,0.75);   
+    width: 100%;
+    background-color: #848686;
+}
+.content-indicator{
+    height: 2px;
+    width: 10%;
+    background-color: #203a43;
+    border: 1px solid white;
+}
+
+.highlight-close-box{
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    cursor: pointer;
+}
+.empty-highlight {
+    visibility: hidden;
+}
+.highlight-navbar{
+    position: absolute;
+    cursor: pointer;
+    background-color: #404040;
+}
+.highlight-navbar:hover,.highlight-navbar:hover + .highlight-navbar {
+    background-color: white;
+}
+.highlight-navbar-right{
+    right: 36%;
+
+}
+.highlight-navbar-left{
+    left: 34%;
+
+}
+
 
 footer p{
     font-size: .8rem;

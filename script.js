@@ -4,7 +4,7 @@ $(document).ready(function(){
     //PROJECTS DETAIL
     var projects = [{
         id: 'storelen',
-        cover: 'project/storelen/cover.PNG',
+        cover: '/assets/project/storelen/cover.PNG',
         title: 'LenAyen Baked Products Order Management System',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP',
@@ -28,7 +28,7 @@ $(document).ready(function(){
     },
     {
         id: 'speakup',
-        cover: 'project/speakup/cover.PNG',
+        cover: '/assets/project/speakup/cover.PNG',
         title: 'Speak Up: a simple freedomwall',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP',
@@ -43,7 +43,7 @@ $(document).ready(function(){
     },
     {
         id: 'caesar',
-        cover: 'project/caesar/caesar.PNG',
+        cover: '/assets/project/caesar/caesar.PNG',
         title: 'Caesar Cipher',
         link: 'https://caesar-cipher-rle.vercel.app/',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery',
@@ -56,7 +56,7 @@ $(document).ready(function(){
     },
     {
         id: 'selfit',
-        cover: 'project/selfit/homepage.PNG',
+        cover: '/assets/project/selfit/homepage.PNG',
         title: 'Self-IT: A Web-based Planner Application',
         link: '#',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery, PHP, Laravel',
@@ -88,7 +88,7 @@ $(document).ready(function(){
     },
     {
         id: 'tictac',
-        cover: 'project/tictac/tictac1.PNG',
+        cover: '/assets/project/tictac/tictac1.PNG',
         title: 'Tic-Tac-Toe',
         link: 'https://tic-tac-toe-rle.vercel.app/',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery',
@@ -100,7 +100,7 @@ $(document).ready(function(){
     },  
     {
         id: 'spotifywrapped',
-        cover: 'project/spotifywrapped/spotifywrapped.PNG',
+        cover: '/assets/project/spotifywrapped/spotifywrapped.PNG',
         title: 'Spotify Wrapped Template Creator',
         link: 'https://spotify-wrapped-creator.vercel.app/',
         techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery',
@@ -140,7 +140,48 @@ $(document).ready(function(){
 
     $('.socialCount').text(socials.length)
 
-
+    //HIGHLIGHTS
+    var highlights = [{
+        id: 'myself',
+        cover: 'cover.jpg',
+        content: [
+            'IMG_6739.jpg',
+            'IMG_6744.jpg'
+        ]
+    },
+    {
+        id: 'work',
+        cover: 'cover.jpg',
+        content: [
+            'received_336991645357796.jpeg',
+            'received_301041282540021.jpeg',
+            'received_280874778125980.jpeg'
+        ]
+    },
+    {
+        id: 'cats',
+        cover: 'cover.jpg',
+        content: [
+            'IMG_20240827_105522_858.jpg',
+            'IMG_20240906_104348_090.jpg',
+            'IMG_20241126_084404_280.jpg',
+            'IMG_20241126_090418_882.jpg'
+        ]
+    },
+    {
+        id: 'arts',
+        cover: 'cover.jpg',
+        content: [
+            '2dda4ef1-730f-4c88-aa5d-a1d7cb4160ed.png',
+            '5f4dcc66-f793-4bf6-ab03-1793b9d939ef.png',
+            '53ac0f2d-b415-4dd9-b9fb-34cc1672d945.png',
+            '910c83b6-d514-48f0-866d-1aee5d55f29a.png',
+            'b5e6cad7-032d-4ebe-90cc-9726cd3da4f5.png',
+            '1733560331125.jpg',
+            'IMG_20210222_150649.jpg'
+        ]
+    },
+    ]
 
     //GET AGE
     var birthdate = new Date(2002,2,25)
@@ -203,7 +244,7 @@ $(document).ready(function(){
         $('.exp-content-wrapper').append(`<div class="mt-2 border p-1 exp-content-box">
            <div class="d-flex justify-content-between px-2 align-items-center exp-content-expand "  data-id="${index}">
              <h5 class="m-0">${exp.position} </h5>
-            <i class="fa-solid fa-x m-0 p-0 fs-6 exp-icon-${index}"></i>
+            <i class="fa-solid fa-xmark m-0 p-0 fs-6 exp-icon-${index}"></i>
            </div>
             <div>
               <div class="collapse collapse-horizontal show" id="exp-collapse-container${index}">
@@ -230,11 +271,11 @@ $(document).ready(function(){
         
         if ($('#exp-collapse-container'+expID).hasClass('show')) { 
             $('.exp-icon-'+expID).addClass('fa-plus')
-            $('.exp-icon-'+expID).removeClass('fa-x')
+            $('.exp-icon-'+expID).removeClass('fa-xmark')
         } 
         else { 
             $('.exp-icon-'+expID).removeClass('fa-plus')
-            $('.exp-icon-'+expID).addClass('fa-x')
+            $('.exp-icon-'+expID).addClass('fa-xmark')
         }
 
         $('#exp-collapse-container'+expID).collapse('toggle')
@@ -348,7 +389,7 @@ $(document).ready(function(){
                 
                 if(index <= 3){
                      var projContent = ` <div class="col-3">
-                                    <img src="/project/${projTitle}/${content}" class="proj-gallery">
+                                    <img src="/assets/project/${projTitle}/${content}" class="proj-gallery">
                                   </div>`
                     $('.proj-gallery-box').append(projContent)
                     totalImages++
@@ -356,7 +397,7 @@ $(document).ready(function(){
                 else{
                     
                     var projContentcollapse = ` <div class="col-3">
-                                    <img src="/project/${projTitle}/${content}" class="proj-gallery">
+                                    <img src="/assets/project/${projTitle}/${content}" class="proj-gallery">
                                   </div>`
                     $('.projgallery-collapse-box').append(projContentcollapse)
                     totalImages++
@@ -423,4 +464,182 @@ $(document).ready(function(){
     $('#projects-modal').on('hidden.bs.modal', function () { 
         closeCollapse();
     })
+
+    // $(document).ready(function() {
+    //     let width = 0;
+    //     let intervalId = setInterval(() => {
+    //       width += 1;
+    //       $('.content-indicator').css('width', width + '%');
+      
+    //       if (width >= 100) {
+    //         clearInterval(intervalId);
+    //       }
+    //     }, 1000);
+    //   });
+
+    //HIGHLIGHTS MODAL  
+    var highlightContent = []
+    highlights.forEach(function(highlight){
+        $('.profile-highlight-container').append(` <div class="highlight-box" id="highlight-box${highlight.id}">
+                        <img class="rounded-circle border border-2" src="/assets/highlights/${highlight.id}/${highlight.cover}" height="80" data-id="${highlight.id}">
+                    </div>`)
+    })
+    function loadHighlightImages(){
+        $('.highlights-modal-content-wrapper').html('')
+        $('.highlights-modal-content-wrapper').html(` <i class="fa-solid fa-xmark text-light fs-2 highlight-close-box" data-bs-dismiss="modal" aria-label="Close"></i>  <div class="rounded-circle d-flex justify-content-center align-items-center p-1 highlight-navbar highlight-navbar-left">
+                  <i class="fa-solid fa-angle-left fs-6 p-0 m-0"></i>
+                </div>
+                <div class="rounded-circle d-flex justify-content-center align-items-center p-1 highlight-navbar highlight-navbar-right">
+                  <i class="fa-solid fa-angle-right fs-6 p-0 m-0"></i>
+                </div>                `)
+        highlights.forEach(function(highlight,index){
+            
+            $('.highlights-modal-content-wrapper').append(` <div class="highlight-content-container border p-1 me-4 rounded-4 " id="highlight-${highlight.id}" data-id="${highlight.id}">
+                      <div class="highlight-info w-100 d-none">
+                        <div class="highlight-content-indicator-wrapper d-flex">
+                          <div class="highlight-content-indicator-box m-1">
+                            <div class="content-indicator"></div>
+                          </div>
+                          <div class="highlight-content-indicator-box m-1">
+                            <div class="content-indicator"></div>
+                          </div>
+                          <div class="highlight-content-indicator-box m-1">
+                            <div class="content-indicator"></div>
+                          </div>
+                          
+                        </div>
+                        <div class="highlight-cover-box mt-2">
+                          <img src="/assets/highlights/${highlight.id}/${highlight.cover}" class="rounded-circle" height="30">
+                        </div>
+                       </div>
+                    </div>`)
+            $(`#highlight-${highlight.id}`).css({
+                        'background-image': `url(/assets/highlights/${highlight.id}/${highlight.content[0]})`
+                      })
+            highlight.content.forEach(function(image){
+                highlightContent.push({
+                    id: highlight.id,
+                    image: image
+                })
+            })
+          
+            if (index === highlights.length - 1) {
+                $('.highlights-modal-content-wrapper').append(` <div class="highlight-content-container empty-highlight border p-1 me-4 rounded-4 bg-danger">
+                        
+                    </div>
+                    <div class="highlight-content-container empty-highlight border p-1 me-4 rounded-4 bg-danger">
+                        
+                    </div>`)
+                $('.highlights-modal-content-wrapper').prepend(` <div class="highlight-content-container empty-highlight border p-1 me-4 rounded-4 bg-danger">
+                        
+                    </div>
+                    <div class="highlight-content-container empty-highlight border p-1 me-4 rounded-4 bg-danger">
+                        
+                    </div>`)
+                 
+            }
+            
+        })
+    }
+    var highlightImage
+    var highlightImageIndex
+
+    // GET ACTIVE ID AND ARRAY ID
+    function highlightOpen(active,id){ 
+        $('.highlight-content-container').removeClass('active-highlight')
+
+        $('.highlight-content-container').addClass('d-none')
+        var next =active.nextAll('.highlight-content-container').slice(0, 2)
+        var prev =active.prevAll('.highlight-content-container').slice(0, 2)
+        next.removeClass('d-none')
+        prev.removeClass('d-none')
+        if($('#highlight-box'+id).is(':first-child')){
+            $('.highlight-navbar-left').addClass('d-none')
+            $('.highlight-navbar-right').removeClass('d-none')
+
+        }
+        else if($('#highlight-box'+id).is(':last-child')){
+            $('.highlight-navbar-right').addClass('d-none')
+            $('.highlight-navbar-left').removeClass('d-none')
+        }
+        else{
+            $('.highlight-navbar-left').removeClass('d-none')
+            $('.highlight-navbar-right').removeClass('d-none')
+        }       
+    }
+    loadHighlightImages()
+    $(document).on('click', '.highlight-box img', function(){   
+        loadHighlightImages()
+
+        var highlightID = ($(this).data('id'))
+        var highlightSelected =  $('#highlight-'+highlightID)
+       
+        highlightOpen(highlightSelected,highlightID)
+  
+        highlightSelected.removeClass('d-none')
+        highlightSelected.addClass('active-highlight')
+        
+        $('#highlights-modal').modal('show')
+
+        highlightImage = highlightContent.find(highlight => highlight.id === highlightID)
+        highlightImageIndex = highlightContent.findIndex(highlight => highlight.id === highlightID)
+        
+    })
+    $(document).on('click', '.highlight-navbar-right',function(){
+        highlightImageIndex+=1
+        var highlightImageSelected = highlightContent[highlightImageIndex].image
+        var highlightIDSelected = highlightContent[highlightImageIndex].id
+        var containerID = $('#highlight-'+highlightIDSelected)
+        containerID.removeClass('highlight-transition')
+
+        containerID.css({
+            'background-image': `url(/assets/highlights/${highlightIDSelected}/${highlightImageSelected})`
+          })
+          
+        if(!$('#highlight-'+highlightIDSelected).hasClass('active-highlight') ){
+            containerID.addClass('highlight-transition')
+
+            highlightOpen(containerID,highlightIDSelected)
+
+            $('.highlight-content-container').removeClass('active-highlight')
+            containerID.addClass('active-highlight')
+            containerID.removeClass('d-none')
+        }
+        // && highlightContent[highlightImageIndex] == 0
+    })
+
+    $(document).on('click', '.highlight-navbar-left',function(){
+        highlightImageIndex-=1
+        var highlightImageSelected = highlightContent[highlightImageIndex].image
+        
+        var highlightIDSelected = highlightContent[highlightImageIndex].id
+        var containerID = $('#highlight-'+highlightIDSelected)
+        containerID.removeClass('highlight-transition')
+        containerID.css({
+            'background-image': `url(/assets/highlights/${highlightIDSelected}/${highlightImageSelected})`
+          })
+          
+        if(!$('#highlight-'+highlightIDSelected).hasClass('active-highlight')){
+            containerID.addClass('highlight-transition')
+            highlightOpen(containerID,highlightIDSelected)
+
+            $('.highlight-content-container').removeClass('active-highlight')
+            containerID.addClass('active-highlight')
+            containerID.removeClass('d-none')
+        }
+    
+    })
+   
+     $(document).on('click', '.highlight-content-container',function(){
+        highlightOpen($(this),$(this).data('id'))
+        highlightID = $(this).data('id')
+        $(this).addClass('highlight-transition')
+
+        highlightImageIndex = highlightContent.findIndex(highlight => highlight.id === highlightID)
+        $(this).removeClass('d-none')
+        $(this).addClass('active-highlight')
+
+    })
+
+    //fix navbar in highlight 
 });
