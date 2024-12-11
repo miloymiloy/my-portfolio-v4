@@ -175,7 +175,7 @@ a{
 .content-indicator{
     height: 2px;
     /* width: 10%; */
-    background-color: #203a43;
+    background-color: #848686;
    
 }
 .highlight-content-indicator-active{
@@ -548,7 +548,9 @@ footer p{
     .highlight-close-box{
         position: absolute;
         right: 14%;
-        top: 1.6rem;
+        top: 1.4rem;
         z-index: 1;
     }
 }
+
+
