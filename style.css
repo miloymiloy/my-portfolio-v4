@@ -145,8 +145,7 @@ a{
 .active-highlight{
     height: 94vh;
     width: 26%;
-    opacity: 100%;
-    
+    transform: scale(1.05); /* Example transform */ opacity: 100%; transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 .highlight-transition{
     transition: all 0.5s ease-in-out;
@@ -167,7 +166,7 @@ a{
 }
 .content-indicator{
     height: 2px;
-    width: 10%;
+    /* width: 10%; */
     background-color: #203a43;
     border: 1px solid white;
 }
@@ -186,9 +185,9 @@ a{
     cursor: pointer;
     background-color: #404040;
 }
-.highlight-navbar:hover,.highlight-navbar:hover + .highlight-navbar {
+/* .highlight-navbar:hover,.highlight-navbar:hover ~ .highlight-navbar,.highlight-navbar:hover + .highlight-navbar {
     background-color: white;
-}
+} */
 .highlight-navbar-right{
     right: 36%;
 
