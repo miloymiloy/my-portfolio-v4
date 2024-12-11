@@ -152,7 +152,8 @@ a{
 .active-highlight{
     height: 94vh;
     width: 26%;
-    transform: scale(1.05); /* Example transform */ opacity: 100%; transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    transform: scale(1.05); 
+    opacity: 100%; transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
 .highlight-transition{
     transition: all 0.5s ease-in-out;
@@ -388,10 +389,46 @@ footer p{
         width: 90%;
         height: 100%;
     }
+
+    .highlight-content-container{
+        display: none;
+    }
+    .highlight-info {
+        padding: 0 .5rem 0 .5rem;
+    }
+    .active-highlight{
+        width: 50%;
+        display: flex;
+    }
+
+    .highlight-close-box{
+        position: absolute;
+        right: 28%;
+        top: 2rem;
+        z-index: 1;
+    }
+    .highlight-navbar{
+        height: 88%;
+        background-color: transparent;
+        width: 20%;
+        top: 11%;
+        border-radius: 0% !important;
+        opacity: 0%;
+    }
+   
+    .highlight-navbar-right{
+        right: 26%;
+    }
+   
+    .highlight-navbar-left{
+        left: 23%;
+    }
+   
     footer p{
         margin-top: 4rem;
         font-size: .6rem;
     }
+
 }
 
 
@@ -466,5 +503,52 @@ footer p{
         width: 90%;
         height: 100%;
     }
+
+
+    .highlight-content-container{
+        margin: 0 !important;
+        padding: 0 !important;
+        padding-top: .5rem !important;
+    }
+    .active-highlight{
+        width: 80%;
+        height: 90vh;
+        display: flex;
+        margin: 0;
+       
+    }
+
+    .highlight-close-box{
+        position: absolute;
+        right: 14%;
+        top: 3rem;
+        z-index: 1;
+    }
+    .highlight-navbar{
+        height: 84%;
+        background-color: transparent;
+        width: 40%;
+        top: 13%;
+        opacity: 0%;
+    }
    
+    .highlight-navbar-right{
+        right: 12%;
+    }
+   
+    .highlight-navbar-left{
+        left: 12%;
+       
+    }
+   
+}
+
+@media (max-width: 570px) {
+
+    .highlight-close-box{
+        position: absolute;
+        right: 14%;
+        top: 1.6rem;
+        z-index: 1;
+    }
 }

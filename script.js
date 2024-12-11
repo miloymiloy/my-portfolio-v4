@@ -665,12 +665,12 @@ $(document).ready(function(){
         containerID.css({
             'background-image': `url(/assets/highlights/${highlightIDSelected}/${highlightImageSelected})`
           })
-       
+        
         if(!$('#highlight-'+highlightIDSelected).hasClass('active-highlight') ){
             containerID.addClass('highlight-transition')
 
             highlightOpen(containerID,highlightIDSelected)
-
+            $('.highlight-content-indicator'+highlightIDSelected).removeClass('highlight-content-indicator-active')
             $('.highlight-content-container').removeClass('active-highlight')
             containerID.addClass('active-highlight')
             containerID.removeClass('d-none inactive-highlight')
@@ -752,9 +752,11 @@ $(document).ready(function(){
     })
 
     //HIGHLIGHT NAVBAR HOVER
-    $(document).on('mouseenter', '.highlight-navbar', function() { $('.highlight-navbar').css('background-color', 'white'); })
-    $(document).on('mouseleave', '.highlight-navbar', function() { $('.highlight-navbar').css('background-color', ''); })
-    
+    if (window.innerWidth > 768) {
+        $(document).on('mouseenter', '.highlight-navbar', function() { $('.highlight-navbar').css('background-color', 'white'); })
+        $(document).on('mouseleave', '.highlight-navbar', function() { $('.highlight-navbar').css('background-color', ''); })
+    }
+
     //REMOVE ALL DATA-ACTIVE IN HIGHLIGHT CONTAINER
     $('#highlights-modal').on('hidden.bs.modal', function () { 
       
