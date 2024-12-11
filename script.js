@@ -505,6 +505,7 @@ $(document).ready(function(){
                           <img src="/assets/highlights/${highlight.id}/${highlight.cover}" class="rounded-circle" height="30">
                         </div>
                        </div>
+                       <img src="/assets/highlights/${highlight.id}/${highlight.cover}" class="rounded-circle highlight-cover-preview" id="highlight-cover-preview${highlight.id}" height="60">
                     </div>`)
             $(`#highlight-${highlight.id}`).css({
                         'background-image': `url(/assets/highlights/${highlight.id}/${highlight.content[0]})`
@@ -516,10 +517,10 @@ $(document).ready(function(){
                     
                 })
                 $('#highlight-content-indicator-wrapper'+highlight.id).append(`<div class="highlight-content-indicator-box m-1">
-                    <div class="content-indicator"></div>
+                    <div class="content-indicator highlight-content-indicator${highlight.id}" id="highlight-content-indicator${highlightContent.length-1}"></div>
                   </div>
                   `)
-                $(`#highlight-${highlight.id}`).data('active',highlight.id)
+                // $(`#highlight-${highlight.id}`).data('active',highlightContent.length)
             })
           
             if (index === highlights.length - 1) {
@@ -559,15 +560,23 @@ $(document).ready(function(){
     function highlightOpen(active,id){ 
         $('.highlight-content-container').removeClass('active-highlight')
 
-        $('.highlight-content-container').addClass('d-none')
-        var next =active.nextAll('.highlight-content-container').slice(0, 2)
-        var prev =active.prevAll('.highlight-content-container').slice(0, 2)
+        $('.highlight-content-container').addClass('d-none inactive-highlight')
+        var next = active.nextAll('.highlight-content-container').slice(0, 2)
+        var prev = active.prevAll('.highlight-content-container').slice(0, 2)
         next.removeClass('d-none')
         prev.removeClass('d-none')
-        
-        if($('#highlight-box'+id).is(':first-child')){
+
+        $('.highlight-cover-preview').removeClass('d-none')
+        $('#highlight-cover-preview'+id).addClass('d-none')
+        //CHECK IF ITS THE FIRS ELEMENT AND CHECK IF THERES NO PREVIOUS ACTIVE HIGHLIGHT
+        if($('#highlight-box'+id).is(':first-child') && active.data('active') == 0){
             $('.highlight-navbar-left').addClass('d-none')
             $('.highlight-navbar-right').removeClass('d-none')
+    
+        }
+        else if($('#highlight-box'+id).is(':last-child') && active.data('active') === highlightContent.length-1){
+            $('.highlight-navbar-left').removeClass('d-none')
+            $('.highlight-navbar-right').addClass('d-none')
     
         }
         else{
@@ -576,13 +585,14 @@ $(document).ready(function(){
         }       
     }
 
-    function highlightNavBarCheck(){
+    function highlightNavBarCheck(container,highlightIDindex){
         if(highlightContent.length-1 > highlightImageIndex && 0 < highlightImageIndex){
             $('.highlight-navbar-right,.highlight-navbar-left').removeClass('d-none')
         }
         else{
             if(highlightContent.length-1 === highlightImageIndex){
                 $('.highlight-navbar-right').addClass('d-none')
+                
             }
             else if(0 === highlightImageIndex){
                 $('.highlight-navbar-left').addClass('d-none')
@@ -592,12 +602,36 @@ $(document).ready(function(){
 
             }
         }
+     
+        //GET LAST ACTIVE HIGHLIGHT IMAGE
+        container.data('active',highlightIDindex)
     }
+
+
+    //ADD ACTIVE INDICATOR FOR ACTIVE HIGHLIGH
+    function activateHighlightIndicator(index){
+         $('#highlight-content-indicator'+index).addClass('highlight-content-indicator-active')
+    }
+
+    //REMOVE ACTIVE INDICATOR FOR ACTIVE HIGHLIGH
+    function removeActivateHighlightIndicator(index){
+        index+=1
+        $('#highlight-content-indicator'+index).removeClass('highlight-content-indicator-active')
+    }
+
 
     //CALL TO LOAD ALL HIGHLIGHT
     loadHighlight()
 
 
+    //RESET ACTIVE HIGHLIGHT
+    function resetHighlight(){
+        $('.highlight-content-container').each(function() { 
+            $(this).data('active','')
+        })
+        $('.content-indicator').removeClass('highlight-content-indicator-active')
+    }
+    
     //HIGHLIGHT IMAGE COVER CLICKED
     $(document).on('click', '.highlight-box img', function(){   
         loadHighlightImages()
@@ -607,13 +641,16 @@ $(document).ready(function(){
        
         highlightOpen(highlightSelected,highlightID)
   
-        highlightSelected.removeClass('d-none')
+        highlightSelected.removeClass('d-none inactive-highlight')
         highlightSelected.addClass('active-highlight')
         
         $('#highlights-modal').modal('show')
 
         highlightImage = highlightContent.find(highlight => highlight.id === highlightID)
         highlightImageIndex = highlightContent.findIndex(highlight => highlight.id === highlightID)
+        
+        //CALL ACTIVATEHIGHLIGHT
+        activateHighlightIndicator(highlightImageIndex)
         
     })
 
@@ -625,7 +662,6 @@ $(document).ready(function(){
         var highlightIDSelected = highlightContent[highlightImageIndex].id
         var containerID = $('#highlight-'+highlightIDSelected)
         containerID.removeClass('highlight-transition')
-
         containerID.css({
             'background-image': `url(/assets/highlights/${highlightIDSelected}/${highlightImageSelected})`
           })
@@ -637,10 +673,13 @@ $(document).ready(function(){
 
             $('.highlight-content-container').removeClass('active-highlight')
             containerID.addClass('active-highlight')
-            containerID.removeClass('d-none')
+            containerID.removeClass('d-none inactive-highlight')
         }
-    
-        highlightNavBarCheck()
+        
+        highlightNavBarCheck(containerID,highlightImageIndex)
+
+        //CALL ACTIVATEHIGHLIGHT
+        activateHighlightIndicator(highlightImageIndex)
         
     })
 
@@ -659,26 +698,55 @@ $(document).ready(function(){
         if(!$('#highlight-'+highlightIDSelected).hasClass('active-highlight')){
             containerID.addClass('highlight-transition')
             highlightOpen(containerID,highlightIDSelected)
-
             $('.highlight-content-container').removeClass('active-highlight')
             containerID.addClass('active-highlight')
-            containerID.removeClass('d-none')
+            containerID.removeClass('d-none inactive-highlight')
+            //ACTIVATE ALL HIGHLIGHT INDICATOR INSIDE CONTAINER
+            $('.highlight-content-indicator'+highlightIDSelected).addClass('highlight-content-indicator-active')
+           
         }
-      
-        highlightNavBarCheck()
-    
+        else{
+          
+            //REMOVE ACTIVATED HIGHLIGHT INDICATOR
+            removeActivateHighlightIndicator(highlightImageIndex)
+        }
+        
+        highlightNavBarCheck(containerID,highlightImageIndex)
+
     })
 
     //HIGHLIGHT MODAL CONTAINER CLICK
      $(document).on('click', '.highlight-content-container',function(){
        if(!$(this).hasClass('active-highlight')){
-            highlightOpen($(this),$(this).data('id'))
-            highlightID = $(this).data('id')
+            var activeHighlightImage = $(this).data('active')
+           
+            var highlightID = $(this).data('id')
+            highlightOpen($(this),highlightID)
+          
             $(this).addClass('highlight-transition')
-
-            highlightImageIndex = highlightContent.findIndex(highlight => highlight.id === highlightID)
-            $(this).removeClass('d-none')
+          
+            $(this).removeClass('d-none inactive-highlight')
             $(this).addClass('active-highlight')
+
+            //CHECK IF THERE IS A PREVIOUS ACTIVE HIGHLIGHT IMAGE
+            if(activeHighlightImage !== '' && activeHighlightImage !== ' '){
+                var activesrc = highlightContent[activeHighlightImage].image
+                $(this).css({
+                    'background-image': `url(/assets/highlights/${highlightID}/${activesrc})`
+                  })
+                highlightImageIndex = activeHighlightImage
+            }
+            else{
+                //IF NO ACTIVE SET INDEX TO 1ST HIGHLIGHT IMAGE 
+                
+                highlightImageIndex = highlightContent.findIndex(highlight => highlight.id === highlightID)
+                $(this).css({
+                    'background-image': `url(/assets/highlights/${highlightID}/${highlightContent[highlightImageIndex]})`
+                  })
+
+            }
+            //CALL ACTIVATEHIGHLIGHT
+            activateHighlightIndicator(highlightImageIndex)
        }
 
     })
@@ -687,7 +755,13 @@ $(document).ready(function(){
     $(document).on('mouseenter', '.highlight-navbar', function() { $('.highlight-navbar').css('background-color', 'white'); })
     $(document).on('mouseleave', '.highlight-navbar', function() { $('.highlight-navbar').css('background-color', ''); })
     
-    
+    //REMOVE ALL DATA-ACTIVE IN HIGHLIGHT CONTAINER
+    $('#highlights-modal').on('hidden.bs.modal', function () { 
+      
+        resetHighlight()
+    })
+
+
     //PRELOAD IMAGES
     highlights.forEach(function(highlight) { 
         highlight.content.forEach(function(image){
@@ -696,5 +770,4 @@ $(document).ready(function(){
         })
     });
 
-    //add data active to check what image is last active in highlight container
 });

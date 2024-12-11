@@ -141,7 +141,14 @@ a{
     background-color: #404040;
     opacity: 40%;
 }
-
+.inactive-highlight{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.highlight-cover-preview{
+    margin-bottom: 3rem;
+}
 .active-highlight{
     height: 94vh;
     width: 26%;
@@ -168,9 +175,11 @@ a{
     height: 2px;
     /* width: 10%; */
     background-color: #203a43;
+   
+}
+.highlight-content-indicator-active{
     border: 1px solid white;
 }
-
 .highlight-close-box{
     position: absolute;
     right: 1rem;
@@ -184,6 +193,7 @@ a{
     position: absolute;
     cursor: pointer;
     background-color: #404040;
+    z-index: 1;
 }
 /* .highlight-navbar:hover,.highlight-navbar:hover ~ .highlight-navbar,.highlight-navbar:hover + .highlight-navbar {
     background-color: white;
