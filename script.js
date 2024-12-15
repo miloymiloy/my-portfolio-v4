@@ -110,6 +110,20 @@ $(document).ready(function(){
             "spotifywrapped1.PNG",
         ],
     },
+    {
+        id: 'guessit',
+        cover: '/assets/project/guessit/cover.PNG',
+        title: 'Guess It: A word guessing game',
+        link: 'https://guess-it-rle.vercel.app/',
+        techUsed:'HTML, CSS, Bootstrap, JavaScript, Jquery',
+        description: 'Created a website where people can guess letters to solve hidden words. Used an API to get new words and their meanings, making the game more fun and educational. Random Word API: https://random-word-api.herokuapp.com/ , Get Meaning: https://dictionaryapi.dev/ .',
+        images: [
+            "game.PNG",
+            "level.PNG",
+            "win.PNG",
+            "lose.PNG",
+        ],
+    },
     ]
 
     //MY SOCIALS
