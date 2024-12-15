@@ -176,10 +176,12 @@ $(document).ready(function(){
         id: 'cats',
         cover: 'cover.jpg',
         content: [
-            'IMG_20240827_105522_858.jpg',
-            'IMG_20240906_104348_090.jpg',
-            'IMG_20241126_084404_280.jpg',
-            'IMG_20241126_090418_882.jpg'
+            'received_1621633628561762.jpeg',
+            'received_1778137719705641.jpeg',
+            'received_931661995579994.jpeg',
+            'received_902291205349533.jpeg',
+            'received_595719562962995.jpeg',
+            'received_1280609076279418.jpeg'
         ]
     },
     {
