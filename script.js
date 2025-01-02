@@ -160,7 +160,8 @@ $(document).ready(function(){
         cover: 'cover.jpg',
         content: [
             'IMG_6739.jpg',
-            'IMG_6744.jpg'
+            'IMG_6744.jpg',
+            'IMG_6733.jpg'
         ]
     },
     {
